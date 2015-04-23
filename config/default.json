@@ -1,0 +1,9 @@
+{
+  "log": {
+    "appenders": [{
+      "type" : "dateFile",
+      "filename": "logs/development.log",
+      "pattern": "-yyyy-MM-dd"
+    }]
+  }
+}

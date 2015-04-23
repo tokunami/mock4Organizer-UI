@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="http://cdn.datatables.net/1.10.6/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="http://cdn.datatables.net/1.10.6/js/jquery.dataTables.min.js"></script>
+    <script src="javascripts/mapview.js"></script>
+    <title>検索結果の表</title>
+  <body>
+    <form action="cgi-bin/abc.cgi" method="post">
+        <p><label>オーガナイザv1.0<input type="text" name="qwordbox" size="40" maxlength="20"></label><input type="submit" value="検索"></p>
+    </form>
+    <p id="filetypeselector">ファイルタイプ：　
+        <input type="checkbox" id="xlsselector">Excel
+        <input type="checkbox" id="docselector" checked="true">Word
+        <input type="checkbox" id="pptselector" checked="true">PowerPoint
+        <input type="checkbox" id="pdfselector" checked="true">PDF
+        <input type="checkbox" id="txtselector" checked="true">Text
+    </p>
+
+    <br>
+    <p><span id="groupcount"></span></p>
+    <hr>
+    <table class="table table-striped table-responsive display" id="resulttable">
+        <thead id="thead">
+            <tr>
+                <th rowspan="2"></th>
+                <th id="groupName" rowspan="2"></th>
+                <th id="pageNum" rowspan="2"></th>
+                <th id="representative" rowspan="2"></th>
+                <th id="author"></th>
+            </tr>
+            <tr id="authorname"></tr>
+        </thead>
+        <tbody id="tbody">
+        </tbody>
+    </table>
+
+    <script type="text/javascript">
+        var object = {};
+        map(object);
+    </script>
+  </body>
+</html>

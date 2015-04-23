@@ -1,0 +1,109 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.table {
+  background: transparent;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 125%;
+  margin-bottom: 20px;
+  width: 100%;
+}
+.table thead tr th,
+.table thead tr td {
+  border: 1px solid #cccccc;
+  border-left-color: transparent;
+  border-top-color: transparent;
+  font-weight: normal;
+  letter-spacing: .001em;
+  line-height: 14px;
+  padding: 10px 10px 5px 5px;
+  text-align: right;
+  vertical-align: bottom;
+}
+.table thead tr th:first-child,
+.table thead tr td:first-child {
+  padding-right: 0;
+  text-align: left;
+}
+.table thead tr th:last-child,
+.table thead tr td:last-child {
+  border-right-color: transparent;
+}
+.table tbody tr {
+  border: 1px solid #fdfdfd;
+}
+.table tbody tr th,
+.table tbody tr td {
+  border: 1px solid #cccccc;
+  border-left-color: transparent;
+  border-top-color: transparent;
+  font-weight: normal;
+  padding: 4px 10px;
+  text-align: right;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.table tbody tr th:first-child,
+.table tbody tr td:first-child {
+  text-align: left;
+}
+.table tbody tr th:last-child,
+.table tbody tr td:last-child {
+  border-right-color: transparent;
+}
+ 
+.table-striped tbody tr:nth-child(odd) {
+  background-color: #f6f6f6;
+}
+
+@media only screen and (max-width: 640px), (max-device-width: 640px) {
+  .table-responsive {
+    display: block;
+    position: relative;
+  }
+  .table-responsive thead,
+  .table-responsive tbody,
+  .table-responsive th,
+  .table-responsive td,
+  .table-responsive tr {
+    display: block;
+  }
+  .table-responsive thead {
+    float: left;
+  }
+  .table-responsive thead tr {
+    border: 1px solid #fdfdfd;
+  }
+  .table-responsive thead tr th,
+  .table-responsive thead tr td {
+    border-bottom-color: #e61376;
+    border-right-color: #e61376;
+    line-height: 20px;
+    padding: 4px 10px;
+  }
+  .table-responsive thead tr th:last-child,
+  .table-responsive thead tr td:last-child {
+    border-right-color: #e61376;
+  }
+  .table-responsive tbody {
+    overflow-x: auto;
+    position: relative;
+    white-space: nowrap;
+    width: auto;
+  }
+  .table-responsive tbody tr {
+    display: inline-block;
+    vertical-align: top;
+  }
+  .table-responsive tbody tr td:first-child {
+    text-align: right;
+  }
+}
