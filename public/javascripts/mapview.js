@@ -12,6 +12,15 @@ function map(data){
 		return;
 	}
 
+	function addth (value, parentId, row, col){
+		var label = document.createElement('th');
+//		var label = $('<th>');
+		label.innerHTML = value;
+		if (row) label.rowspan = row;
+		if (col) label.colspan = col;
+		document.getElementById(parentId).appendChild(label);
+	}
+
 	var authorcount = Object.keys(data.authors).length;
 	var indextag = ['groupName', 'pageNum', 'representative', 'author'];
 	var indextitle = ['文書グループ名', '関連ページ数', '代表ページ', '作成者'];
@@ -24,20 +33,13 @@ function map(data){
 		});
 	});
 
-	Object.keys(indextag).forEach(function (tag_index){
+	Object.keys(indextitle).forEach(function (tag_index){
 		document.getElementById(indextag[tag_index]).innerHTML = indextitle[tag_index];
 		//$('#groupName').html('グループ名');
 	});
 
 	document.getElementById('author').colspan = authorcount;
 //	$('#author').attr('colspan', authorcount);
-
-	function addth (value, parentId){
-		var authorlabel = document.createElement('th');
-//		var authorlabel = $('<th>');
-		authorlabel.innerHTML = value;
-		document.getElementById(parentId).appendChild(authorlabel);
-	}
 	
 	Object.keys(data.authors).forEach(function (author_index){
 		var sum_page_per_author = 0;
@@ -48,15 +50,16 @@ function map(data){
 		addth(data.authors[author_index] + '<br />' + sum_page_per_author + '件', 'authorname');
 	});
 
-	var thumbnailurl = 'pictures';
+	var thumbnailurl = 'pictures';	//http://servername/lds/document
 
 	Object.keys(data.groups).forEach(function (group_index){
 		var groupNumber = parseInt(group_index) + 1;
-		var represent = data.groups[group_index].represent;
+		var group = data.groups[group_index];
+		var represent = group.represent;
 		
 		var contents = [
 			groupNumber, 
-			data.groups[group_index].groupName,
+			group.groupName,
 			'',
 			'<a href="" id=""><img src="' + thumbnailurl + represent.path + 'thumb/' + represent.pageNum + '.png"></a>',
 			represent.fileName + '<br />Page:' + represent.pageNum + '<br />' + represent.timeStamp + '<br />' + data.authors[represent.author]
@@ -64,7 +67,7 @@ function map(data){
 		var sum_page_per_group = 0;	//関連ページ数
 
 		for (var i = 0; i < authorcount; i++) {
-			var num_of_page = Object.keys(data.groups[group_index].documents[j]).length;
+			var num_of_page = Object.keys(group.documents[i]).length;
 			contents.push(num_of_page);
 			sum_page_per_group = sum_page_per_group + num_of_page;
 		}
