@@ -33,14 +33,15 @@ function map(data){
 		});
 	});
 
+	//indextitleをtableのth要素に流し込む
 	Object.keys(indextitle).forEach(function (tag_index){
-		document.getElementById(indextag[tag_index]).innerHTML = indextitle[tag_index];
-		//$('#groupName').html('グループ名');
+		document.getElementById(indextag[tag_index]).innerHTML = indextitle[tag_index]
 	});
 
+	//authorをauthorcountの数に分割する
 	document.getElementById('author').colspan = authorcount;
-//	$('#author').attr('colspan', authorcount);
-	
+
+	//受け取ったdataオブジェクトの各authors要素に対してページ数の合計xを算出し、'名前<br />x件'を流し込む
 	Object.keys(data.authors).forEach(function (author_index){
 		var sum_page_per_author = 0;
 
@@ -51,7 +52,9 @@ function map(data){
 	});
 
 	var thumbnailurl = 'pictures';	//http://servername/lds/document
+	var slideurl = 'slide';
 
+	//受け取ったdataオブジェクトの各groups要素のコンテンツを作成し流し込む
 	Object.keys(data.groups).forEach(function (group_index){
 		var groupNumber = parseInt(group_index) + 1;
 		var group = data.groups[group_index];
@@ -61,7 +64,7 @@ function map(data){
 			groupNumber, 
 			group.groupName,
 			'',
-			'<a href="" id=""><img src="' + thumbnailurl + represent.path + 'thumb/' + represent.pageNum + '.png"></a>',
+			'<a href="' + slideurl + represent.path + '&page=' + represent.pageNum + '" id=""><img src="' + thumbnailurl + represent.path + 'thumb/' + represent.pageNum + '.png"></a>',
 			represent.fileName + '<br />Page:' + represent.pageNum + '<br />' + represent.timeStamp + '<br />' + data.authors[represent.author]
 		];
 		var sum_page_per_group = 0;	//関連ページ数
