@@ -5,14 +5,15 @@
     <link rel="stylesheet" href="stylesheets/style2.css">
     <link rel="stylesheet" href="http://cdn.datatables.net/1.10.6/css/jquery.dataTables.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <script src="http://cdn.datatables.net/1.10.6/js/jquery.dataTables.min.js"></script>
     <script src="javascripts/mapview.js"></script>
-
+    <script src="javascripts/jq.dataTables.min.js"></script>
     <title>検索結果の表</title>
   <body>
     <form action="cgi-bin/abc.cgi" method="post">
-        <p><label>オーガナイザv1.0<input type="text" name="qwordbox" size="40" maxlength="20"></label><input type="submit" value="検索"></p>
+        <p><label>オーガナイザv1.0<input type="text" id="qwordbox" name="qwordbox" size="40" maxlength="20"></label><input type="submit" value="検索"></p>
     </form>
     <p id="filetypeselector">ファイルタイプ：　
         <input type="checkbox" id="xlsselector">Excel
@@ -25,6 +26,10 @@
     <br>
     <p><span id="groupcount"></span></p>
     <hr>
+    <form action="list.html" method="post">
+      <input type="hidden" name="name" value="valueeee">
+      <input type="submit" value="click">
+    </form>
     <table class="table table-striped table-responsive display" id="resulttable">
         <thead id="thead" class="scrollHead">
             <tr>
