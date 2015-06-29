@@ -2,18 +2,17 @@
 <html lang="ja">
     <meta charset="UTF-8">
 
-    <link rel="stylesheet" href="stylesheets/style2.css">
-    <link rel="stylesheet" href="http://cdn.datatables.net/1.10.6/css/jquery.dataTables.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="stylesheets/jquery.dataTables.css">
+    <link rel="stylesheet" href="stylesheets/style.css">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-    <script src="http://cdn.datatables.net/1.10.6/js/jquery.dataTables.min.js"></script>
+    <script src="javascripts/jquery.min.js"></script>
+    <script src="javascripts/jquery.dataTables.min.js"></script>
     <script src="javascripts/mapview.js"></script>
-    <script src="javascripts/jq.dataTables.min.js"></script>
+
     <title>検索結果の表</title>
   <body>
     <form action="cgi-bin/abc.cgi" method="post">
-        <p><label>オーガナイザv1.0<input type="text" id="qwordbox" name="qwordbox" size="40" maxlength="20"></label><input type="submit" value="検索"></p>
+        <p><img src="images/title.png" width="130px"><input type="text" id="qwordbox" name="qwordbox" size="40" maxlength="20"></label><input type="submit" value="検索"></p>
     </form>
     <p id="filetypeselector">ファイルタイプ：　
         <input type="checkbox" id="xlsselector">Excel
@@ -26,24 +25,18 @@
     <br>
     <p><span id="groupcount"></span></p>
     <hr>
-    <form action="list.html" method="post">
-      <input type="hidden" name="name" value="valueeee">
-      <input type="submit" value="click">
-    </form>
-    <table class="table table-striped table-responsive display" id="resulttable">
-        <thead id="thead" class="scrollHead">
-            <tr>
-                <th rowspan="2"></th>
-                <th id="groupName" rowspan="2"></th>
-                <th id="pageNum" rowspan="2"></th>
-                <th id="representative" rowspan="2" colspan="2"></th>
-                <div style="overflow-x:auto">
-                    <th id="author" class="author"></th>
-                </div>
+
+    <table class="table display cell-border" id="resulttable">
+        <thead id="thead">
+            <tr id="titlerow">
+                <th id="header"></th>
+                <th id="groupName"></th>
+                <th id="pageNum"></th>
+                <th id="representativepage"></th>
+                <th id="representativetitle"></th>
             </tr>
-            <tr id="authorname"></tr>
         </thead>
-        <tbody id="tbody" class="scrollBody">
+        <tbody id="tbody">
         </tbody>
     </table>
 

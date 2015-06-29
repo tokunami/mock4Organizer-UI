@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var morgan = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var fs = require('fs');
 
 var app = express();
 
@@ -29,6 +30,11 @@ app.get('/ldssearch', function (req, res) {
 
 app.get('/', function (req, res) {
   res.render('index', { title: 'オーガナイザv1.0' });
+});
+
+app.get('/lds2api', function (req, res) {
+  res.setHeader("Content-Type", "application/json; charset=utf-8");
+  fs.createReadStream(path.join(__dirname, 'prop.json')).pipe(res);
 });
 
 // catch 404 and forward to error handler
