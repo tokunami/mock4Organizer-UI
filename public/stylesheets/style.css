@@ -109,10 +109,6 @@ table.dataTable.cell-border tbody tr:first-child td {
   text-overflow: ellipsis;
 }
 
-#groupName {
-  width: 4em;
-}
-
 table.dataTable thead .sorting,
 table.dataTable thead .sorting_asc,
 table.dataTable thead .sorting_desc,
@@ -122,25 +118,12 @@ table.dataTable thead .sorting_desc_disabled {
   background-position: 100% 90%;
 }
 
-/*
-thead.scrollHead, tbody.scrollBody{
-  display:block;
+.unselectable {
+  user-select: none; /* CSS3 */
+  -moz-user-select: none; /* Firefox */
+  -webkit-user-select: none; /* Safari、Chromeなど */
+  -ms-user-select: none; /* IE10かららしい */
 }
-tbody.scrollBody{
-  overflow-y:scroll;
-  height:1000px;
-}
-
-td, th{
-  table-layout:fixed;
-}
-.pageNum{
-  width:30px;
-}
-td.name{
-  width:40px;
-}
-*/
 
 button,
 input,

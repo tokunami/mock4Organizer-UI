@@ -1,3 +1,17 @@
+$(document).ready(function (){
+	$('#resultlist').dataTable({
+		"bFilter": false,
+		"scrollY": "520px",
+		"scrollCollapse": true,
+		"paging": false,
+		"order": [],
+		"aoColumnDefs": [
+			{ "bSortable": false, "aTargets": [0]},
+			{ "bSortable": false, "aTargets": [3]}
+		]
+	});
+});
+
 function list(data){
 	if (!data.query) {
 //		$('#groupcount').text('エラーです');
@@ -12,27 +26,18 @@ function list(data){
 		return;
 	}
 
-	function addth (value, parentId, row, col){
-		var label = document.createElement('th');
-//		var label = $('<th>');
-		label.innerHTML = value;
-		if (row) label.rowspan = row;
-		if (col) label.colspan = col;
-		document.getElementById(parentId).appendChild(label);
-	}
-
-//	var authorcount = Object.keys(data.authors).length;
-	var indextag = ['representative', 'groupName', 'author', 'file', 'contents'];
-	var indextitle = ['代表ページ', 'グループ名', '作成者', 'ファイル', '内容'];
+	var indextag = ['representative', 'groupName', 'author', 'thumbnail', 'file', 'contents'];
+	var indextitle = [
+	'<div style="width: 3em">代表<br>ページ</div>',
+	'<div style="width: 5em">文書<br>グループ名</div>',
+	'<div style="width: 5em">作成者</div>',
+	'<div style="width: 8em">サムネイル</div>',
+	'<div style="width: 12em">ファイル名',
+	'内容'
+	];
 
 
 	$('#searchword').text('検索ワード：' + data.query);
-
-	$(document).ready(function (){
-		$('#resultlist').dataTable({
-			"bFilter": false
-		});
-	});
 
 	//indextitleをtableのth要素に流し込む
 	Object.keys(indextitle).forEach(function (tag_index){
@@ -66,9 +71,16 @@ function list(data){
 		var newtr = document.getElementById("tbody").insertRow(group_index);
 		newtr.id = 'list' + listNumber;
 
-		for (var i = 0; i < 6; i++) {
+		for (var i = 0; i < indextag.length; i++) {
 			var newcell = document.getElementById(newtr.id).insertCell(i);
-			newcell.innerHTML = contents[i];	
+			newcell.innerHTML = contents[i];
+			if (i === 1 || i === 4) {
+				newcell.className = 'alignleft';
+			}
+			if (i === 5) {
+				newcell.className = 'alignleft';
+				newcell.className += ' unselectable';
+			}
 		}
 	});
 }

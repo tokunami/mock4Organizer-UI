@@ -38,10 +38,10 @@ var map = function (originaldata){
 		'<div style="width: 5em">文書<br>グループ名</div>',
 		'<div style="width: 4em">ページ数</div>',
 		'<div style="width: 8em">代表ページ</div>',
-		'ファイル名'
+		'<div style="width: 12em">ファイル名</div>'
 		];
 
-	var proplists = getEmproProp("登録部門名", data.authors).result;
+	var proplist = getEmproProp("登録部門名", data.authors).result;
 
 	$('#groupcount').text(groupcount + '件の文書グループが見つかりました');
 
