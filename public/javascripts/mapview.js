@@ -22,6 +22,13 @@ var map = function (originaldata){
 		return;
 	}
 
+	Object.keys(originaldata.groups).forEach(function (i){
+		if(originaldata.groups[i].documents.length !== originaldata.authors.length) {
+			data = null;
+			return;
+		}
+	});
+
 	data = originaldata;
 
 	var groupcount = data.groups.length;
@@ -70,9 +77,9 @@ var map = function (originaldata){
 		var groupNumber = parseInt(group_index) + 1;
 		var group = data.groups[group_index];
 		var represent = group.represent;
-		
+
 		var contents = [
-			groupNumber, 
+			groupNumber,
 			group.groupName,
 			'',
 			'<img src="' + thumbnailurl + represent.path + 'thumb/' + represent.pageNum + '.png">',
@@ -84,7 +91,7 @@ var map = function (originaldata){
 			'/lds2/knowwho?q=' + qword + ' AND ' + group.groupName + '&amp;Word=t&amp;PowerPoint=t&amp;PDF=t&amp;Text=t&amp;XDW=t',
 			'javascript:listview(searchinfobygroup(' + group_index + '))',
 			slideurl + represent.path + '&page=' + represent.pageNum,
-			''	
+			''
 			]
 		var sum_page_per_group = 0;	//関連ページ数
 
@@ -260,7 +267,7 @@ function initdocList(){
 
 function getEmproProp(propname, source){
 	ajax_post(
-		'',	
+		'',
 		function (res){
 			return res;
 		},

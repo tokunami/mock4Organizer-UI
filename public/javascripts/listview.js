@@ -32,7 +32,7 @@ function list(data){
 	'<div style="width: 5em">文書<br>グループ名</div>',
 	'<div style="width: 5em">作成者</div>',
 	'<div style="width: 8em">サムネイル</div>',
-	'<div style="width: 12em">ファイル名',
+	'<div style="width: 12em">ファイル名</div>',
 	'内容'
 	];
 
@@ -68,13 +68,15 @@ function list(data){
 			list.概要
 		];
 
+		console.log(contents);
+
 		var newtr = document.getElementById("tbody").insertRow(group_index);
 		newtr.id = 'list' + listNumber;
 
 		for (var i = 0; i < indextag.length; i++) {
 			var newcell = document.getElementById(newtr.id).insertCell(i);
 			newcell.innerHTML = contents[i];
-			if (i === 1 || i === 4) {
+			if (i === 1 || i === 2 || i === 4) {
 				newcell.className = 'alignleft';
 			}
 			if (i === 5) {

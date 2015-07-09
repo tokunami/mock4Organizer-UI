@@ -103,7 +103,7 @@ table.dataTable.cell-border tbody tr:first-child td {
 }
 
 .department {
-  font-size: xx-small;
+  font-size: x-small;
   font-weight: normal;
   overflow: hidden;
   text-overflow: ellipsis;
